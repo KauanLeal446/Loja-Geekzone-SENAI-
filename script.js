@@ -14,7 +14,7 @@ const BACKEND_URL =
 
         ? "http://127.0.0.1:3000"
 
-        : "https://loja-geekzone-senai.onrender.com/";
+        : "https://loja-geekzone-senai.onrender.com";
 
 const WHATSAPP_NUMERO =
     "5512981889190";
