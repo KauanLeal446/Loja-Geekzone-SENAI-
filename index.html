@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GeekZone - Tecnologia, games, acessórios e muito mais.">
+    <title>GeekZone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+
+            <a href="#inicio" class="logo">
+                <span class="logo-geek">GEEK</span>
+                <span class="logo-zone">ZONE</span>
+            </a>
+
+            <nav class="nav">
+                <a href="#inicio">Início</a>
+                <a href="#produtos">Produtos</a>
+                <a href="#categorias">Categorias</a>
+                <a href="#contato">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <button
+                    class="cart-button"
+                    id="cartButton"
+                    type="button"
+                >
+                    🛒 Carrinho
+
+                    <span
+                        id="cartCount"
+                        class="cart-count"
+                    >
+                        0
+                    </span>
+                </button>
+
+                <button
+                    id="menuButton"
+                    class="menu-button"
+                    type="button"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a href="#inicio">
+            Início
+        </a>
+
+        <a href="#produtos">
+            Produtos
+        </a>
+
+        <a href="#categorias">
+            Categorias
+        </a>
+
+        <a href="#contato">
+            Contato
+        </a>
+
+        <button
+            id="mobileCartButton"
+            class="mobile-cart-button"
+            type="button"
+        >
+            🛒 Carrinho
+
+            <span id="mobileCartCount">
+                0
+            </span>
+        </button>
+
+    </div>
+
+
+    <main>
+
+        <section
+            class="hero"
+            id="inicio"
+        >
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <span class="section-tag">
+                        🚀 BEM-VINDO À GEEKZONE
+                    </span>
+
+                    <h1>
+                        Tecnologia para
+
+                        <span>
+                            quem vive o futuro.
+                        </span>
+                    </h1>
+
+                    <p>
+                        Encontre produtos, acessórios e equipamentos para transformar
+                        sua experiência com tecnologia e games.
+                    </p>
+
+                    <a
+                        href="#produtos"
+                        class="hero-button"
+                    >
+                        Ver produtos
+                    </a>
+
+                </div>
+
+
+                <div class="hero-image">
+
+                    <div class="hero-circle">
+                        🎮
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="categorias"
+            class="categories"
+        >
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-tag">
+                        EXPLORE
+                    </span>
+
+                    <h2>
+                        Encontre o que você procura
+                    </h2>
+
+                    <p>
+                        Explore as categorias da GeekZone.
+                    </p>
+
+                </div>
+
+
+                <div class="category-grid">
+
+                    <button
+                        class="category-card active"
+                        data-category="Todos"
+                        type="button"
+                    >
+                        <span class="category-icon">
+                            🛍️
+                        </span>
+
+                        <span>
+                            Todos
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="Games"
+                        type="button"
+                    >
+                        <span class="category-icon">
+                            🎮
+                        </span>
+
+                        <span>
+                            Games
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="Informática"
+                        type="button"
+                    >
+                        <span class="category-icon">
+                            💻
+                        </span>
+
+                        <span>
+                            Informática
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="Acessórios"
+                        type="button"
+                    >
+                        <span class="category-icon">
+                            🎧
+                        </span>
+
+                        <span>
+                            Acessórios
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="Celulares"
+                        type="button"
+                    >
+                        <span class="category-icon">
+                            📱
+                        </span>
+
+                        <span>
+                            Celulares
+                        </span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="produtos"
+            class="products"
+        >
+
+            <div class="container">
+
+                <div class="products-top">
+
+                    <div class="section-header">
+
+                        <span class="section-tag">
+                            NOSSA LOJA
+                        </span>
+
+                        <h2>
+                            Produtos em destaque
+                        </h2>
+
+                        <p>
+                            Produtos cadastrados pela GeekZone.
+                        </p>
+
+                    </div>
+
+
+                    <div class="search-box">
+
+                        <input
+                            id="searchInput"
+                            type="text"
+                            placeholder="Buscar produto..."
+                            autocomplete="off"
+                        >
+
+                        <button
+                            id="searchButton"
+                            type="button"
+                            aria-label="Pesquisar"
+                        >
+                            🔎
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="productsStatus"
+                    class="products-status"
+                >
+                    Carregando produtos...
+                </div>
+
+
+                <div
+                    id="productsGrid"
+                    class="products-grid"
+                ></div>
+
+
+                <div
+                    id="emptyProducts"
+                    class="empty-products"
+                    hidden
+                >
+
+                    <div class="empty-icon">
+                        📦
+                    </div>
+
+                    <h3>
+                        Nenhum produto encontrado
+                    </h3>
+
+                    <p>
+                        Não encontramos produtos para essa busca.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="contato"
+            class="contact"
+        >
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-tag">
+                        FALE CONOSCO
+                    </span>
+
+                    <h2>
+                        Precisa de ajuda?
+                    </h2>
+
+                    <p>
+                        Entre em contato com a GeekZone.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-grid">
+
+                    <div class="contact-card">
+
+                        <span class="contact-icon">
+                            📱
+                        </span>
+
+                        <h3>
+                            WhatsApp
+                        </h3>
+
+                        <p>
+                            Fale diretamente com nossa equipe.
+                        </p>
+
+                        <a
+                            href="#"
+                            id="whatsappLink"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Falar conosco
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div
+        id="cartOverlay"
+        class="cart-overlay"
+        hidden
+    ></div>
+
+
+    <aside
+        id="cartDrawer"
+        class="cart-drawer"
+        aria-hidden="true"
+    >
+
+        <div class="cart-header">
+
+            <div>
+
+                <span class="section-tag">
+                    GEEKZONE
+                </span>
+
+                <h2>
+                    Seu carrinho
+                </h2>
+
+            </div>
+
+
+            <button
+                id="cartCloseButton"
+                class="cart-close"
+                type="button"
+                aria-label="Fechar carrinho"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="cartEmpty"
+            class="cart-empty"
+        >
+
+            <div>
+                🛒
+            </div>
+
+            <h3>
+                Seu carrinho está vazio
+            </h3>
+
+            <p>
+                Adicione produtos para continuar.
+            </p>
+
+        </div>
+
+
+        <div
+            id="cartItems"
+            class="cart-items"
+        ></div>
+
+
+        <div class="cart-footer">
+
+            <div class="cart-total-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <strong id="cartTotal">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+
+            <button
+                id="checkoutButton"
+                class="checkout-button"
+                type="button"
+            >
+                FINALIZAR COMPRA
+            </button>
+
+
+            <button
+                id="clearCartButton"
+                class="clear-cart-button"
+                type="button"
+            >
+                Limpar carrinho
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <div
+        id="checkoutOverlay"
+        class="checkout-overlay"
+        hidden
+    >
+
+        <div class="checkout-modal">
+
+            <div class="checkout-header">
+
+                <div>
+
+                    <span class="section-tag">
+                        FINALIZAR PEDIDO
+                    </span>
+
+                    <h2>
+                        Dados para entrega
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="checkoutCloseButton"
+                    class="checkout-close"
+                    type="button"
+                    aria-label="Fechar checkout"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form
+                id="checkoutForm"
+                class="checkout-form"
+            >
+
+                <div class="checkout-section">
+
+                    <h3>
+                        👤 Dados pessoais
+                    </h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group full">
+
+                            <label for="customerName">
+                                Nome completo
+                            </label>
+
+                            <input
+                                id="customerName"
+                                type="text"
+                                required
+                                autocomplete="name"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerPhone">
+                                Telefone
+                            </label>
+
+                            <input
+                                id="customerPhone"
+                                type="tel"
+                                required
+                                autocomplete="tel"
+                                placeholder="(12) 99999-9999"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerEmail">
+                                E-mail
+                            </label>
+
+                            <input
+                                id="customerEmail"
+                                type="email"
+                                required
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="checkout-section">
+
+                    <h3>
+                        📍 Endereço de entrega
+                    </h3>
+
+
+                    <div class="cep-row">
+
+                        <div class="form-group">
+
+                            <label for="customerCep">
+                                CEP
+                            </label>
+
+                            <input
+                                id="customerCep"
+                                type="text"
+                                required
+                                maxlength="9"
+                                placeholder="00000-000"
+                                inputmode="numeric"
+                            >
+
+                        </div>
+
+
+                        <button
+                            id="calculateShippingButton"
+                            class="calculate-shipping-button"
+                            type="button"
+                        >
+                            CALCULAR FRETE
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="cepStatus"
+                        class="cep-status"
+                    ></div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group full">
+
+                            <label for="customerStreet">
+                                Rua
+                            </label>
+
+                            <input
+                                id="customerStreet"
+                                type="text"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerNumber">
+                                Número
+                            </label>
+
+                            <input
+                                id="customerNumber"
+                                type="text"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerComplement">
+                                Complemento
+                            </label>
+
+                            <input
+                                id="customerComplement"
+                                type="text"
+                                placeholder="Opcional"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerNeighborhood">
+                                Bairro
+                            </label>
+
+                            <input
+                                id="customerNeighborhood"
+                                type="text"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerCity">
+                                Cidade
+                            </label>
+
+                            <input
+                                id="customerCity"
+                                type="text"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerState">
+                                Estado
+                            </label>
+
+                            <input
+                                id="customerState"
+                                type="text"
+                                maxlength="2"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="checkout-section">
+
+                    <h3>
+                        🧾 Resumo do pedido
+                    </h3>
+
+
+                    <div
+                        id="checkoutProducts"
+                        class="checkout-products"
+                    ></div>
+
+
+                    <div class="checkout-values">
+
+                        <div>
+
+                            <span>
+                                Produtos
+                            </span>
+
+                            <strong id="checkoutSubtotal">
+                                R$ 0,00
+                            </strong>
+
+                        </div>
+
+
+                        <div
+                            id="checkoutDiscountRow"
+                            hidden
+                        >
+
+                            <span>
+                                Desconto (10%)
+                            </span>
+
+                            <strong id="checkoutDiscount">
+                                - R$ 0,00
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Distância
+                            </span>
+
+                            <strong id="checkoutDistance">
+                                Calcule o frete
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Frete
+                            </span>
+
+                            <strong id="checkoutShipping">
+                                R$ 0,00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="checkout-total">
+
+                            <span>
+                                TOTAL
+                            </span>
+
+                            <strong id="checkoutTotal">
+                                R$ 0,00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="confirm-order-button"
+                    type="submit"
+                >
+                    CONFIRMAR PEDIDO
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="aiAssistant"
+        class="ai-assistant"
+    >
+
+        <button
+            id="aiLauncher"
+            class="ai-launcher"
+            type="button"
+            aria-expanded="false"
+            aria-label="Abrir GeekBot"
+        >
+
+            <span class="ai-launcher-icon">
+                🤖
+            </span>
+
+            <span class="ai-launcher-text">
+                Fale com a IA
+            </span>
+
+        </button>
+
+
+        <div
+            id="aiChat"
+            class="ai-chat"
+            aria-hidden="true"
+        >
+
+            <div class="ai-chat-header">
+
+                <div class="ai-chat-identity">
+
+                    <div class="ai-avatar">
+                        🤖
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            GeekBot
+                        </strong>
+
+                        <span>
+                            Assistente virtual GeekZone
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="aiChatClose"
+                    class="ai-chat-close"
+                    type="button"
+                    aria-label="Fechar GeekBot"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div
+                id="aiChatMessages"
+                class="ai-chat-messages"
+                aria-live="polite"
+            ></div>
+
+
+            <form
+                id="aiChatForm"
+                class="ai-chat-form"
+            >
+
+                <input
+                    id="aiChatInput"
+                    type="text"
+                    placeholder="Digite sua pergunta..."
+                    autocomplete="off"
+                    maxlength="500"
+                >
+
+
+                <button
+                    id="aiMicButton"
+                    class="ai-mic-button"
+                    type="button"
+                    aria-label="Falar com o GeekBot"
+                    title="Clique para falar"
+                >
+                    🎤
+                </button>
+
+
+                <button
+                    class="ai-send-button"
+                    type="submit"
+                    aria-label="Enviar mensagem"
+                >
+                    ➤
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <a
+                href="#inicio"
+                class="logo"
+            >
+                <span class="logo-geek">
+                    GEEK
+                </span>
+
+                <span class="logo-zone">
+                    ZONE
+                </span>
+            </a>
+
+            <p>
+                Tecnologia, games e inovação.
+            </p>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            © <span id="currentYear"></span> GeekZone
+        </div>
+
+    </footer>
+
+
+    <script
+        type="module"
+        src="script.js"
+    ></script>
+
+</body>
+</html>
