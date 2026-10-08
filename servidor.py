@@ -837,43 +837,6 @@ def montar_catalogo_texto():
     )
 
 # =========================================================
-# SAIR DO EASTER EGG
-# =========================================================
-
-def detectar_retorno_tema_normal(texto):
-
-    texto = normalizar_texto(
-        texto
-    )
-
-    comandos_retorno = [
-        "voltar para o padrao da loja",
-        "voltar ao padrao da loja",
-        "voltar para o padrao",
-        "voltar ao padrao",
-        "voltar para o normal",
-        "voltar ao normal",
-        "quero voltar ao normal",
-        "quero voltar para o normal",
-        "sair do lado sombrio",
-        "desativar lado sombrio",
-        "desative o lado sombrio",
-        "tirar modo sith",
-        "sair do modo sith",
-        "restaurar tema",
-        "restaurar o tema",
-        "tema normal",
-        "modo normal",
-        "voltar como estava",
-        "volte como estava",
-    ]
-
-    return any(
-        comando in texto
-        for comando in comandos_retorno
-    )
-
-# =========================================================
 # EASTER EGG - LADO SOMBRIO
 # =========================================================
 
@@ -978,7 +941,7 @@ def responder_geekbot(
 
         }
 
-    # =========================================================
+# =========================================================
 # SAIR DO EASTER EGG
 # =========================================================
 
@@ -1015,49 +978,204 @@ def detectar_retorno_tema_normal(texto):
         for comando in comandos_retorno
     )
 
+
+# =========================================================
+# EASTER EGG - LADO SOMBRIO
+# =========================================================
+
+def detectar_lado_sombrio(texto):
+
+    texto = normalizar_texto(
+        texto
+    )
+
+    palavras_sombrias = [
+        "darth vader",
+        "vader",
+        "sith",
+        "lado negro",
+        "lado sombrio",
+        "lado escuro",
+        "dark side",
+    ]
+
+    return any(
+        palavra in texto
+        for palavra in palavras_sombrias
+    )
+
+
+# =========================================================
+# CÉREBRO DO GEEKBOT
+# =========================================================
+
+def responder_geekbot(
+    mensagem_cliente
+):
+
+    mensagem_normalizada = normalizar_texto(
+        mensagem_cliente
+    )
+
+
+    # =====================================================
+    # SAIR DO LADO SOMBRIO
+    # Deve vir ANTES da ativação
+    # =====================================================
+
+    if detectar_retorno_tema_normal(
+        mensagem_cliente
+    ):
+
+        return {
+
+            "resposta":
+                (
+                    "Como desejar. A GeekZone está "
+                    "voltando ao seu visual normal. ⚡"
+                ),
+
+            "resposta_agente":
+                (
+                    "Como desejar. A GeekZone está "
+                    "voltando ao seu visual normal. ⚡"
+                ),
+
+            "comando_tela":
+                "desativar_lado_sombrio",
+
+            "humor":
+                0,
+
+            "intencao":
+                "tema_normal",
+
+            "confianca":
+                100,
+
+        }
+
+
+    # =====================================================
+    # ATIVAR LADO SOMBRIO
+    # =====================================================
+
+    if detectar_lado_sombrio(
+        mensagem_cliente
+    ):
+
+        return {
+
+            "resposta":
+                (
+                    "Você demonstrou interesse pelo Lado Sombrio... "
+                    "A GeekZone acaba de mudar de lado. 🔴"
+                ),
+
+            "resposta_agente":
+                (
+                    "Você demonstrou interesse pelo Lado Sombrio... "
+                    "A GeekZone acaba de mudar de lado. 🔴"
+                ),
+
+            "comando_tela":
+                "ativar_lado_sombrio",
+
+            "humor":
+                0,
+
+            "intencao":
+                "lado_sombrio",
+
+            "confianca":
+                100,
+
+        }
+
+
+    # =====================================================
+    # IDENTIFICAR INTENÇÃO
+    # =====================================================
+
     melhor_intencao = None
 
     maior_pontuacao = 0
 
+
     for intencao, dados in matriz_de_intencoes.items():
+
         resultado = process.extractOne(
+
             mensagem_normalizada,
+
             dados[
                 "treino"
             ],
+
         )
 
+
         if resultado is None:
+
             continue
+
 
         _, pontuacao = resultado
 
+
         if pontuacao > maior_pontuacao:
+
             maior_pontuacao = pontuacao
 
             melhor_intencao = intencao
+
+
+    # =====================================================
+    # ANALISAR HUMOR
+    # =====================================================
 
     polaridade = analisar_humor(
         mensagem_cliente
     )
 
+
     acao_especial = "nenhuma"
 
+
+    # =====================================================
+    # CLIENTE FRUSTRADO
+    # =====================================================
+
     if polaridade < 0:
+
         resposta_final = (
             "Sinto muito que esteja frustrado. "
             "Estou te encaminhando para nosso atendimento humano "
             "para tentarmos resolver isso da melhor forma."
         )
 
-        acao_especial = "abrir_chamado"
+
+        acao_especial = (
+            "abrir_chamado"
+        )
+
+
+    # =====================================================
+    # INTENÇÃO RECONHECIDA
+    # =====================================================
 
     elif (
         maior_pontuacao >= 60
         and
         melhor_intencao
     ):
+
+        # =================================================
+        # CATÁLOGO DINÂMICO
+        # =================================================
+
         if melhor_intencao == "catalogo":
+
             resposta_final = (
                 "No catálogo atual temos: "
                 +
@@ -1066,7 +1184,13 @@ def detectar_retorno_tema_normal(texto):
                 "."
             )
 
+
+        # =================================================
+        # CLIENTE FELIZ
+        # =================================================
+
         elif polaridade > 0:
+
             resposta_final = (
                 matriz_de_intencoes[
                     melhor_intencao
@@ -1075,7 +1199,13 @@ def detectar_retorno_tema_normal(texto):
                 ]
             )
 
+
+        # =================================================
+        # CLIENTE NEUTRO
+        # =================================================
+
         else:
+
             resposta_final = (
                 matriz_de_intencoes[
                     melhor_intencao
@@ -1084,14 +1214,27 @@ def detectar_retorno_tema_normal(texto):
                 ]
             )
 
+
+    # =====================================================
+    # NÃO ENTENDEU
+    # =====================================================
+
     else:
+
         resposta_final = (
-            "Bip bop! Ainda não consegui entender muito bem. "
-            "Você pode perguntar sobre produtos, frete, desconto, "
-            "estoque ou pagamento."
+            "Bip bop! Ainda não consegui "
+            "entender muito bem. "
+            "Você pode perguntar sobre produtos, "
+            "frete, desconto, estoque ou pagamento."
         )
 
+
+    # =====================================================
+    # RESPOSTA FINAL
+    # =====================================================
+
     return {
+
         "resposta":
             resposta_final,
 
@@ -1109,8 +1252,8 @@ def detectar_retorno_tema_normal(texto):
 
         "confianca":
             maior_pontuacao,
-    }
 
+    }
 
 # =========================================================
 # STATUS
